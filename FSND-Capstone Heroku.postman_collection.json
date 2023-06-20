@@ -1,0 +1,628 @@
+{
+	"info": {
+		"_postman_id": "0ad575d1-de7b-4d72-81b5-3649c582cd02",
+		"name": "udacity-fsnd-capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16879593",
+		"_collection_link": "https://bold-crater-860632.postman.co/workspace/ducdet~18ebde7e-62e4-46e9-ac73-3c43519f4dac/collection/16879593-0ad575d1-de7b-4d72-81b5-3649c582cd02?action=share&creator=16879593&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "staff",
+			"item": [
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains drinks array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/drinks"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/actors/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Robert Downey Jr.\",\n  \"age\": 56,\n  \"gender\": \"Male\",\n  \"bio\": \"Robert John Downey Jr. is an American actor. He is best known for his role as Tony Stark / Iron Man in the Marvel Cinematic Universe.\",\n  \"nationality\": \"American\",\n  \"profile_image\": \"https://example.com/robert_downey_jr.jpg\",\n  \"movie_ids\": [1, 2, 3]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Shawshank Redemption\",\n  \"release_date\": \"1994-10-14\",\n  \"description\": \"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.\",\n  \"genre\": \"Drama\",\n  \"director\": \"Frank Darabont\",\n  \"poster_image\": \"https://example.com/poster.jpg\",\n  \"average_rating\": 9.3,\n  \"actor_ids\": [1, 2, 3]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Inception\",\n  \"release_date\": \"2010-07-16\",\n  \"description\": \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.\",\n  \"genre\": \"Action\",\n  \"director\": \"Christopher Nolan\",\n  \"poster_image\": \"https://example.com/inception_poster.jpg\",\n  \"average_rating\": 8.8,\n  \"actor_ids\": [1, 2, 88]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/movies/14"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": "{{host}}/drinks/1"
+					},
+					"response": []
+				},
+				{
+					"name": "movies/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/movies/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/drinks/1"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg5NjU2ZDNmYjZmYWI4NWQ0YzQyMGQiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NzE2NDY2NywiZXhwIjoxNjg3MjUxMDYxLCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDphY3RvcnMtaW5mbyIsImdldDpkcmlua3MtZGV0YWlsIiwiZ2V0Om1vdmllcyIsImdldDptb3ZpZXMtaW5mbyIsInJlYWQ6ZHJpbmtzIl19.i8lT6tShz6UMOj0sN5rMJk7xQ8Iwcy3v0HjPSxUVRoufRPSPsCx1eFiugEiDsy7eMgN74ItcJPja4TWAeeLird7HD8SriXPHXF-oLbhSRkj3DDZEYmWAvYear-oIr3X1PUUudQ4Chh9NuFtdiBj7zNXAATl3csoWGQ1yd7pZRb2E-w4XqnHhUqd445TymDAA9Zuj9V6sVJ30TINV49ME4WVctVrnOzffsCSBuOFOh9cAVRVeLttviwXT5rPDwA_NzuoyFX3MhTQc0yTpe1jQKwlyracLxtrWrQHY90AsA0aObRUWx_TFsHVlv8l15TvqYYEV5cYS5k-3E4EomKcodg"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains drinks array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/drinks"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains drinks array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.drinks).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/actors/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Robert Downey Jr.\",\n  \"age\": 56,\n  \"gender\": \"Male\",\n  \"bio\": \"Robert John Downey Jr. is an American actor. He is best known for his role as Tony Stark / Iron Man in the Marvel Cinematic Universe.\",\n  \"nationality\": \"American\",\n  \"profile_image\": \"https://example.com/robert_downey_jr.jpg\",\n  \"movie_ids\": [1, 2, 3]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Shawshank Redemption\",\n  \"release_date\": \"1994-10-14\",\n  \"description\": \"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.\",\n  \"genre\": \"Drama\",\n  \"director\": \"Frank Darabont\",\n  \"poster_image\": \"https://example.com/poster.jpg\",\n  \"average_rating\": 9.3,\n  \"actor_ids\": [1, 2, 3]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Inception\",\n  \"release_date\": \"2010-07-16\",\n  \"description\": \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.\",\n  \"genre\": \"Action\",\n  \"director\": \"Christopher Nolan\",\n  \"poster_image\": \"https://example.com/inception_poster.jpg\",\n  \"average_rating\": 8.8,\n  \"actor_ids\": [1, 2, 88]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/movies/14"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": "{{host}}/drinks/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/movies/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks/1 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 since no credentials are present\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/drinks/1"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg2ZDcwYjY1ZDU2YjQ5Njg0NzQ3ZDkiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NzI0NjUwOSwiZXhwIjoxNjg3MzMyOTAzLCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFkbWluIiwiZGVsZXRlOmFjdG9yIiwiZGVsZXRlOmFkbWluIiwiZGVsZXRlOmRyaW5rcyIsImRlbGV0ZTptb3ZpZSIsImdldDphY3RvcnMiLCJnZXQ6YWN0b3JzLWluZm8iLCJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJnZXQ6bW92aWVzIiwiZ2V0Om1vdmllcy1pbmZvIiwicGF0Y2g6YWN0b3IiLCJwYXRjaDpkcmlua3MiLCJwYXRjaDptb3ZpZSIsInBvc3Q6YWN0b3IiLCJwb3N0OmRyaW5rcyIsInBvc3Q6bW92aWUiLCJyZWFkOmFkbWluIiwicmVhZDpkcmlua3MiLCJ1cGRhdGU6YWRtaW4iXX0.ZJL5N5wbbLeGOI7OmKNeOjMiRLQnIvtDYE_PK8GqdPkHvBEl2cv81uK1ObGQ3HW6eAUs2xwLp7qKBqeOSFRSGtZXIGifzFrbfO0NfGpB1k2zywKR6A3jtoMOyVs6MsJ7KHeZQIjfY25ZqfNuoH6aYL2_sl1nhE8ZifGlrfG780vx-mO7rYwOj4Bo5JDeEZVN8lfTK_rzW_BS1Ujch9IEjanlSAf-n5aS25hObmfbsgwuJpH921WCIHrkjTfvU2e8qInKauZdyPswo2lOo3bWoo8faleo_fezfVSb53elFyD7g7Ni6GAaIQ4pRRtSKuNpexrLitkfqv-N_mvgjN09ug"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		},
+		{
+			"key": "barista",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg5NjU2ZDNmYjZmYWI4NWQ0YzQyMGQiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NjcyNjc2OSwiZXhwIjoxNjg2NzMzOTY5LCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmRyaW5rcy1kZXRhaWwiLCJyZWFkOmRyaW5rcyJdfQ.ac-zqZ3VQVi_-cv8s2qYWkd7YmTrz2ZK60Z67P3laEZV6JXsAMUm2zelE2sbxvVmDRNdbDuh8ayUpcR4ICw0Nx7Rb-ftOgQK5M2wo0u1G9P0pUifRx6Gf8bVJ9T3OoqQYz_hQk6vY0Ku-moPUmfNNoxtP7azD2SKTEu0NXRGG5R_kciCDuSZUmxVcwEgabQDMyD-oJl-S8He6-tlZ_Z5L-_S3S1-4lDwHU3a8PUj97OMfc8iAg6RmV50-utXdQsvlliRmO1riKIUj3DvMJ4fXu4ou087lZhGTykHVPAY8K4bLLOnGgtYDHF82Av9QvGN-0x9Ubrh1wUKk9uYnrmcHw",
+			"type": "string"
+		},
+		{
+			"key": "ManagerToken",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg2ZDcwYjY1ZDU2YjQ5Njg0NzQ3ZDkiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NjcyNzI2NSwiZXhwIjoxNjg2Nzk5MjYxLCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFkbWluIiwiZGVsZXRlOmFkbWluIiwiZGVsZXRlOmRyaW5rcyIsImdldDpkcmlua3MiLCJnZXQ6ZHJpbmtzLWRldGFpbCIsInBhdGNoOmRyaW5rcyIsInBvc3Q6ZHJpbmtzIiwicmVhZDphZG1pbiIsInJlYWQ6ZHJpbmtzIiwidXBkYXRlOmFkbWluIl19.oD3ND7SMqA3B1JJCqNmA9ONT1RnhpJRz2g1cxVUvCqBr_JpWiBU0AUSDID3NbhV6MRnfMoAgiErC-tiWwXpTUboIzJzDFiEWl66WawtfWDJod97v4YwrIqZmB75R4-mi8QGWAXYiW6ATcU9mbzAAOyTR_-GC6SKqW4FmL1MXAiKWMoupwH2FcDXwlDzXqlIo31UFAhGz90i7_3BGUxyXUcJUQTxo7jXlkUO-7iIgREDH-9DGAH_CX--rOZXfSCKISQEJLBtb2N7HsDCEzFDZHKTrAipfPA6flQ5D2-XXsFZ1UplHiBK5GhYvPFovRhIfiuDnkR352DmOmo_UZDoRsA",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}
