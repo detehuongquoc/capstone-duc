@@ -6,6 +6,20 @@ from decouple import config
 database_url = config('DATABASE_PATH')
 db = SQLAlchemy()
 
+class BaseModel(db.Model):
+    __abstract__ = True
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
 movies_actors = db.Table('movies_actors',
     db.Column('movie_id', db.Integer, db.ForeignKey('movies.id'), primary_key=True),
     db.Column('actor_id', db.Integer, db.ForeignKey('actors.id'), primary_key=True)
@@ -26,7 +40,7 @@ def db_drop_and_create_all(app):
         db.create_all()
 
 
-class Movie(db.Model):
+class Movie(BaseModel):
     __tablename__ = 'movies'
 
     id = Column(Integer, primary_key=True)
@@ -91,7 +105,7 @@ class Movie(db.Model):
         }
 
 
-class Actor(db.Model):
+class Actor(BaseModel):
     __tablename__ = 'actors'
 
     id = Column(Integer, primary_key=True)
