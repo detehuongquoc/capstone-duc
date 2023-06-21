@@ -2,7 +2,7 @@
 
 ## Capstone Project for Udacity's Full Stack Developer Nanodegree
 TODO
-Heroku Link: https://ry-fsnd-capstone.herokuapp.com
+Heroku Link: https://serene-retreat-91427-44e50b468425.herokuapp.com/
 
 While running locally: http://localhost:5000
 
@@ -56,7 +56,7 @@ Using the `--reload` flag will detect file changes and restart the server automa
 
 ## Getting Started
 TODO
-Base URL: This application can be run locally. The hosted version is at `https://ry-fsnd-capstone.herokuapp.com`.
+Base URL: This application can be run locally. The hosted version is at `https://serene-retreat-91427-44e50b468425.herokuapp.com`.
 
 Authentication: This application requires authentication to perform various actions. All the endpoints require
 various permissions, except the root (or health) endpoint, that are passed via the `Bearer` token.
@@ -74,7 +74,7 @@ Errors are returned as JSON objects in the following format:
 ```
 {
     "error": 404,
-    "message": "The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.",
+    "message": "resource not found",
     "success": false
 }
 ```
@@ -88,353 +88,347 @@ The API will return the following errors based on how the request fails:
  - 422: Unprocessable Entity
  - 500: Internal Server Error
 
+# API Documentation
+
 ## Endpoints
 
-#### GET /
- - General
-   - root endpoint
-   - can also work to check if the api is up and running
-   - is a public endpoint, requires no authentication
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com`
+### GET /actors
 
-<details>
-<summary>Sample Response</summary>
+Returns a list of all actors.
 
-```
+#### Permissions
+
+- Requires authentication with the `get:actors` permission.
+
+#### Request
+
+- Method: GET
+- URL: `/actors`
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
-    "health": "Running!!"
+  "success": true,
+  "actors": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "movies": ["Movie 1", "Movie 2"]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "movies": ["Movie 3", "Movie 4"]
+    }
+  ]
 }
 ```
 
-</details>
+## Endpoints
 
-#### GET /actors
- - General
-   - gets the list of all the actors
-   - requires `get:actors` permission
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors`
+### GET /actors/{actor_id}
 
-<details>
-<summary>Sample Response</summary>
+Returns information about a specific actor.
 
-```
-{
-    "actors": [
-        {
-            "id": 1,
-            "name": "Anne Hathaway"
-        },
-        {
-            "id": 2,
-            "name": "Matthew McConaughey"
-        },
-        {
-            "id": 3,
-            "name": "Margot Robbie"
-        },
-        {
-            "id": 4,
-            "name": "Mary Elizabeth Winstead"
-        }
-    ],
-    "success": true
-}
-```
+#### Permissions
 
-</details>
+- Requires authentication with the `get:actors-info` permission.
 
-#### GET /actors/{actor_id}
- - General
-   - gets the complete info for an actor
-   - requires `get:actors-info` permission
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors/1`
+#### Request
 
-<details>
-<summary>Sample Response</summary>
+- Method: GET
+- URL: `/actors/{actor_id}`
 
-```
+- Path Parameters:
+  - `actor_id` (integer, required): The ID of the actor.
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
     "actor": {
-        "date_of_birth": "November 12, 1982",
-        "full_name": "Anne Jacqueline Hathaway",
-        "movies": [
-            "Serenity"
-        ],
-        "name": "Anne Hathaway"
+        "age": 56,
+        "bio": "Robert John Downey Jr. is an American actor. He is best known for his role as Tony Stark / Iron Man in the Marvel Cinematic Universe.",
+        "gender": "Male",
+        "movies": [],
+        "name": "Robert Downey Jr.",
+        "nationality": "American",
+        "profile_image": "https://example.com/robert_downey_jr.jpg"
     },
     "success": true
 }
 ```
-  
-</details>
 
-#### POST /actors
- - General
-   - creates a new actor
-   - requires `post:actor` permission
- 
- - Request Body
-   - name: string, required
-   - full_name: string, optional
-   - date_of_birth: date, required
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors`
-   - Request Body
-     ```
-        {
-            "name": "Ana de Armas",
-            "full_name": "Ana Celia de Armas Caso",
-            "date_of_birth": "April 30, 1988"
-        }
-     ```
+### POST /actors
 
-<details>
-<summary>Sample Response</summary>
+Creates a new actor.
 
-```
+#### Permissions
+
+- Requires authentication with the `create:actors` permission with manager token.
+
+#### Request
+
+- Method: POST
+- URL: `/actors`
+
+- Headers:
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Body:
+
+```json
 {
-    "created_actor_id": 5,
+    "created": 3,
     "success": true
 }
 ```
-  
-</details>
 
-#### PATCH /actors/{actor_id}
- - General
-   - updates the info for an actor
-   - requires `patch:actor` permission
- 
- - Request Body (at least one of the following fields required)
-   - name: string, optional
-   - full_name: string, optional
-   - date_of_birth: date, optional
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors/5`
-   - Request Body
-     ```
-       {
-            "full_name": "Ana de Arams Caso"
-       }
-     ```
+### PATCH /actors/{actor_id}
 
-<details>
-<summary>Sample Response</summary>
+Updates an existing actor.
 
-```
+#### Permissions
+
+- Requires authentication with the `patch:actor` permission.
+
+#### Request
+
+- Method: PATCH
+- URL: `/actors/{actor_id}`
+
+- Headers:
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Path Parameters:
+  - `actor_id` (integer, required): The ID of the actor to be updated.
+
+- Body: 
+
+```json
 {
     "actor_info": {
-        "date_of_birth": "April 30, 1988",
-        "full_name": "Ana de Arams Caso",
-        "name": "Ana de Armas"
+        "age": 37,
+        "bio": "Scarlett Johansson is an American actress. She is best known for her role as Natasha Romanoff / Black Widow in the Marvel Cinematic Universe.",
+        "gender": "Female",
+        "name": "Scarlett Johansson",
+        "nationality": "American",
+        "profile_image": "https://example.com/scarlett_johansson_updated.jpg"
     },
     "success": true
 }
-```
-  
-</details>
-
-#### DELETE /actors/{actor_id}
- - General
-   - deletes the actor
-   - requires `delete:actor` permission
-   - will also delete the mapping to the movie but will not delete the movie from the database
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors/5`
-
-<details>
-<summary>Sample Response</summary>
 
 ```
+
+### DELETE /actors/{actor_id}
+
+Deletes an existing actor.
+
+#### Permissions
+
+- Requires authentication with the `delete:actor` permission.
+
+#### Request
+
+- Method: DELETE
+- URL: `/actors/{actor_id}`
+
+- Headers:
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Path Parameters:
+  - `actor_id` (integer, required): The ID of the actor to be deleted.
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
     "deleted_actor_id": 5,
     "success": true
 }
 ```
-  
-</details>
+### GET /movies
 
-#### GET /movies
- - General
-   - gets the list of all the movies
-   - requires `get:movies` permission
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/movies`
+Returns a list of all movies.
 
-<details>
-<summary>Sample Response</summary>
+#### Permissions
 
-```
+- Requires authentication with the `get:movies` permission.
+
+#### Request
+
+- Method: GET
+- URL: `/movies`
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
     "movies": [
         {
-            "id": 1,
-            "release_year": 2019,
-            "title": "Serenity"
-        },
-        {
-            "id": 2,
-            "release_year": 2020,
-            "title": "Birds of Prey"
+            "actors": [
+                "Robert Downey Jr.",
+                "Robert Downey Jr.",
+                "Scarlett Johansson"
+            ],
+            "average_rating": 9.3,
+            "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+            "director": "Frank Darabont",
+            "genre": "Drama",
+            "poster_image": "https://example.com/poster.jpg",
+            "release_date": "October 14, 1994",
+            "title": "The Shawshank Redemption"
         }
     ],
     "success": true
 }
 ```
+### GET /movies/{movie_id}
 
-</details>
+Returns information about a specific movie.
 
-#### GET /movies/{movie_id}
- - General
-   - gets the complete info for a movie
-   - requires `get:movies-info` permission
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/movies/1`
+#### Permissions
 
-<details>
-<summary>Sample Response</summary>
+- Requires authentication with the `get:movies-info` permission.
 
-```
+#### Request
+
+- Method: GET
+- URL: `/movies/{movie_id}`
+
+- Path Parameters:
+  - `movie_id` (integer, required): The ID of the movie.
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
     "movie": {
-        "cast": [
-            "Anne Hathaway",
-            "Matthew McConaughey"
+        "actors": [
+            "Robert Downey Jr.",
+            "Robert Downey Jr.",
+            "Scarlett Johansson"
         ],
-        "duration": 106,
-        "imdb_rating": 5.3,
-        "release_year": 2019,
-        "title": "Serenity"
+        "average_rating": 9.3,
+        "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "director": "Frank Darabont",
+        "genre": "Drama",
+        "poster_image": "https://example.com/poster.jpg",
+        "release_date": "October 14, 1994",
+        "title": "The Shawshank Redemption"
     },
     "success": true
 }
 ```
-  
-</details>
+### POST /movies
 
-#### POST /movies
- - General
-   - creates a new movie
-   - requires `post:movie` permission
- 
- - Request Body
-   - title: string, required
-   - duration: integer, required
-   - release_year: integer, required
-   - imdb_rating: float, required
-   - cast: array of string, non-empty, required
- 
- - NOTE
-   - Actors passed in the `cast` array in request body must already exist in the database prior to making this request.
-   - If not, the request will fail with code 422.
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/actors`
-   - Request Body
-     ```
-        {
-            "title": "Knives Out",
-            "duration": 130,
-            "release_year": 2019,
-            "imdb_rating": 7.9,
-            "cast": ["Ana de Armas"]
-        }
-     ```
+Creates a new movie.
 
-<details>
-<summary>Sample Response</summary>
+#### Permissions
 
-```
+- Requires authentication with the `post:movie` permission.
+
+#### Request
+
+- Method: POST
+- URL: `/movies`
+
+- Headers:
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Body:
+
+```json
 {
-    "created_movie_id": 3,
+    "created": 2,
     "success": true
 }
 ```
-  
-</details>
+### PATCH /movies/{movie_id}
 
-#### PATCH /movie/{movie_id}
- - General
-   - updates the info for a movie
-   - requires `patch:movie` permission
- 
- - Request Body (at least one of the following fields required)
-   - title: string, optional
-   - duration: integer, optional
-   - release_year: integer, optional
-   - imdb_rating: float, optional
-   - cast: array of string, non-empty, optional
- 
- - NOTE
-   - Actors passed in the `cast` array in request body will completely replace the existing relationship.
-   - So, if you want to append new actors to a movie, pass the existing actors also in the request.
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/movies/3`
-   - Request Body
-     ```
-       {
-            "imdb_rating": 8.1
-       }
-     ```
+Updates an existing movie.
 
-<details>
-<summary>Sample Response</summary>
+#### Permissions
 
-```
+- Requires authentication with the `patch:movie` permission.
+
+#### Request
+
+- Method: PATCH
+- URL: `/movies/{movie_id}`
+
+- Headers:
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Body (example):
+
+```json
 {
     "movie_info": {
-        "duration": 130,
-        "imdb_rating": 8.1,
-        "release_year": 2019,
-        "title": "Knives Out"
+        "average_rating": 8.8,
+        "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+        "director": "Christopher Nolan",
+        "genre": "Action",
+        "poster_image": "https://example.com/inception_poster.jpg",
+        "release_date": "July 16, 2010",
+        "title": "Inception"
     },
     "success": true
 }
 ```
-  
-</details>
+### DELETE /movies/{movie_id}
 
-#### DELETE /movies/{movie_id}
- - General
-   - deletes the movie
-   - requires `delete:movie` permission
-   - will not affect the actors present in the database
- 
- - Sample Request
-   - `https://ry-fsnd-capstone.herokuapp.com/movies/3`
+Deletes a movie.
 
-<details>
-<summary>Sample Response</summary>
+#### Permissions
 
-```
+- Requires authentication with the `delete:movie` permission.
+
+#### Request
+
+- Method: DELETE
+- URL: `/movies/{movie_id}`
+
+- Headers:
+  - `Authorization: Bearer {YOUR_ACCESS_TOKEN}`
+
+- Path Parameters:
+  - `movie_id` (integer, required): The ID of the movie to be deleted.
+
+#### Response
+
+- Status code: 200 (OK)
+- Body:
+
+```json
 {
-    "deleted_movie_id": 3,
+    "deleted_actor_id": 3,
     "success": true
 }
 ```
-  
-</details>
 
 ## Testing
-For testing the backend, run the following commands (in the exact order):
+For testing the backend, run the following commands
 ```
-dropdb capstone_test
-createdb capstone_test
-psql capstone_test < casting.sql
-python test.py
+python -m unittest test_app.py
 ```
-
-Alternate way: Create the db `capstone_test` using PgAdmin and copy the contents of casting.sql and paste them
-in Query tool in PgAdmin and create the db table with records. Then, run the command `python test.py`.

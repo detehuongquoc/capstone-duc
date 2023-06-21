@@ -266,7 +266,7 @@
 			"auth": {
 				"type": "bearer",
 				"bearer": {
-					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg5NjU2ZDNmYjZmYWI4NWQ0YzQyMGQiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NzE2NDY2NywiZXhwIjoxNjg3MjUxMDYxLCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDphY3RvcnMtaW5mbyIsImdldDpkcmlua3MtZGV0YWlsIiwiZ2V0Om1vdmllcyIsImdldDptb3ZpZXMtaW5mbyIsInJlYWQ6ZHJpbmtzIl19.i8lT6tShz6UMOj0sN5rMJk7xQ8Iwcy3v0HjPSxUVRoufRPSPsCx1eFiugEiDsy7eMgN74ItcJPja4TWAeeLird7HD8SriXPHXF-oLbhSRkj3DDZEYmWAvYear-oIr3X1PUUudQ4Chh9NuFtdiBj7zNXAATl3csoWGQ1yd7pZRb2E-w4XqnHhUqd445TymDAA9Zuj9V6sVJ30TINV49ME4WVctVrnOzffsCSBuOFOh9cAVRVeLttviwXT5rPDwA_NzuoyFX3MhTQc0yTpe1jQKwlyracLxtrWrQHY90AsA0aObRUWx_TFsHVlv8l15TvqYYEV5cYS5k-3E4EomKcodg"
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg5NjU2ZDNmYjZmYWI4NWQ0YzQyMGQiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NzMzMjA4NCwiZXhwIjoxNjg3NDE4NDc4LCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmFjdG9ycyIsImdldDphY3RvcnMtaW5mbyIsImdldDpkcmlua3MtZGV0YWlsIiwiZ2V0Om1vdmllcyIsImdldDptb3ZpZXMtaW5mbyIsInJlYWQ6ZHJpbmtzIl19.47OumMAR720qq2wUV_IdGvmH2TU3uMYubPrsqpdyNyqOm5W5_nCLyAh2jZHX2WVzCieT73VRzMLZDZYVW71DFJCjjrYrBxUCTXE2n_PnRp6VlJqdd0AEcBsyyHOuvrD-gWnbET-eJ5rp-W51boOoAfLR_9WRmmFj_YKWTwRVsvCjkT_acO9BZtOp6Auy8pNyvvHUjnSgmf2TZfPAPS-8UhtzHoUFwTLmkJF9a8ZzLFds6SrhMgUyqhLcmysyym1Gmhq1IQmpsAQ4Zm7NCzc1APfAa4d1_7KvibIpAyOriuyuzQT4M3HRFdV1BKxMupkMsK4q-hFKF6E_pjYtu_tkpQ"
 				}
 			},
 			"event": [
@@ -316,7 +316,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{host}}/drinks"
+						"url": "{{host}}/actors"
 					},
 					"response": []
 				},
@@ -602,27 +602,13 @@
 	"variable": [
 		{
 			"key": "host",
+			"value": "https://serene-retreat-91427-44e50b468425.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"key": "host_local",
 			"value": "http://127.0.0.1:5000",
 			"type": "string"
-		},
-		{
-			"key": "barista",
-			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg5NjU2ZDNmYjZmYWI4NWQ0YzQyMGQiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NjcyNjc2OSwiZXhwIjoxNjg2NzMzOTY5LCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZ2V0OmRyaW5rcy1kZXRhaWwiLCJyZWFkOmRyaW5rcyJdfQ.ac-zqZ3VQVi_-cv8s2qYWkd7YmTrz2ZK60Z67P3laEZV6JXsAMUm2zelE2sbxvVmDRNdbDuh8ayUpcR4ICw0Nx7Rb-ftOgQK5M2wo0u1G9P0pUifRx6Gf8bVJ9T3OoqQYz_hQk6vY0Ku-moPUmfNNoxtP7azD2SKTEu0NXRGG5R_kciCDuSZUmxVcwEgabQDMyD-oJl-S8He6-tlZ_Z5L-_S3S1-4lDwHU3a8PUj97OMfc8iAg6RmV50-utXdQsvlliRmO1riKIUj3DvMJ4fXu4ou087lZhGTykHVPAY8K4bLLOnGgtYDHF82Av9QvGN-0x9Ubrh1wUKk9uYnrmcHw",
-			"type": "string"
-		},
-		{
-			"key": "ManagerToken",
-			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImkzUGtIRk0tRTFjd3loeDJVek5qQSJ9.eyJpc3MiOiJodHRwczovL2Rldi14MjZmb3l3Z3A0czEzd3A2LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2NDg2ZDcwYjY1ZDU2YjQ5Njg0NzQ3ZDkiLCJhdWQiOiJhZG1pbiIsImlhdCI6MTY4NjcyNzI2NSwiZXhwIjoxNjg2Nzk5MjYxLCJhenAiOiI3NXJMYzdOZDhYNTVERWc5bkk1UW0zZ3QxRHJ6OXhxTSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFkbWluIiwiZGVsZXRlOmFkbWluIiwiZGVsZXRlOmRyaW5rcyIsImdldDpkcmlua3MiLCJnZXQ6ZHJpbmtzLWRldGFpbCIsInBhdGNoOmRyaW5rcyIsInBvc3Q6ZHJpbmtzIiwicmVhZDphZG1pbiIsInJlYWQ6ZHJpbmtzIiwidXBkYXRlOmFkbWluIl19.oD3ND7SMqA3B1JJCqNmA9ONT1RnhpJRz2g1cxVUvCqBr_JpWiBU0AUSDID3NbhV6MRnfMoAgiErC-tiWwXpTUboIzJzDFiEWl66WawtfWDJod97v4YwrIqZmB75R4-mi8QGWAXYiW6ATcU9mbzAAOyTR_-GC6SKqW4FmL1MXAiKWMoupwH2FcDXwlDzXqlIo31UFAhGz90i7_3BGUxyXUcJUQTxo7jXlkUO-7iIgREDH-9DGAH_CX--rOZXfSCKISQEJLBtb2N7HsDCEzFDZHKTrAipfPA6flQ5D2-XXsFZ1UplHiBK5GhYvPFovRhIfiuDnkR352DmOmo_UZDoRsA",
-			"type": "string"
-		},
-		{
-			"value": "",
-			"type": "string",
-			"disabled": true
-		},
-		{
-			"key": "variable_key",
-			"value": ""
 		}
 	]
 }

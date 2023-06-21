@@ -99,7 +99,7 @@ def create_app(test_config=None):
     @requires_auth("patch:actor")
     def update_actor(payload, actor_id):
         actor = Actor.query.filter_by(id=actor_id).first_or_404()
-
+        print(actor, "********")
         try:
             request_body = request.get_json()
             if not request_body:
@@ -124,7 +124,8 @@ def create_app(test_config=None):
                 "actor_info": actor.long()
             }), 200
 
-        except Exception:
+        except Exception as e:
+            print(e, "error")
             abort(500)
 
     
