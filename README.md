@@ -1,7 +1,14 @@
+# Full Stack Capstone movies API Backend
 # Capstone API
 
 ## Capstone Project for Udacity's Full Stack Developer Nanodegree
-TODO
+
+## About
+
+Welcome to the Movies Management System! This project aims to provide a simple and efficient solution for managing actors and movies in a web application. It allows users to easily store, retrieve, update, and delete information about actors and movies through a user-friendly interface.
+
+All endpoints need to be tested using curl or postman since there is no frontend for the app yet.
+
 Heroku Link: https://serene-retreat-91427-44e50b468425.herokuapp.com/
 
 While running locally: http://localhost:5000
@@ -18,12 +25,15 @@ Follow instructions to install the latest version of python for your platform in
 
 Recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
+#### Project dependencies
+The project depends on the latest version of Python 3.x which we recommend to download and install from their official website and use a virtual environment to install all dependencies.
+
 #### PIP Dependencies
 
 Once you have your virtual environment setup and running, install dependencies by running:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 This will install all of the required packages.
@@ -40,11 +50,19 @@ Before running the application locally, make the following changes in the `app.p
 
 - uncomment the line `db_drop_and_create_all()` on the initial run to setup the required tables in the database.
 
-To run the server, execute:
+To run the server, execute in linux:
 
 ```bash
 export DATABASE_URL=<database-connection-url>
 export FLASK_APP=app.py
+flask run --reload
+```
+
+To run the server, execute in window:
+
+```bash
+set DATABASE_URL=<database-connection-url>
+set FLASK_APP=app.py
 flask run --reload
 ```
 
@@ -55,7 +73,6 @@ Using the `--reload` flag will detect file changes and restart the server automa
 ## API Reference
 
 ## Getting Started
-TODO
 Base URL: This application can be run locally. The hosted version is at `https://serene-retreat-91427-44e50b468425.herokuapp.com`.
 
 Authentication: This application requires authentication to perform various actions. All the endpoints require
@@ -426,9 +443,23 @@ Deletes a movie.
     "success": true
 }
 ```
+## THIRD-PARTY AUTHENTICATION
+#### auth.py
+Auth0 is set up and running. The following configurations are in a .env file which is exported by the app:
+- The Auth0 Domain Name
+- The JWT code signing secret
+- The Auth0 Client ID
+The JWT token contains the permissions for the 'staff' and 'manager' roles.
 
 ## Testing
 For testing the backend, run the following commands
 ```
 python -m unittest test_app.py
 ```
+
+## DEPLOYMENT
+The app is hosted live on heroku at the URL: 
+https://serene-retreat-91427-44e50b468425.herokuapp.com/
+
+However, there is no frontend for this app yet, and it can only be presently used to authenticate using Auth0 by entering
+credentials and retrieving a fresh token to use with curl or postman.
