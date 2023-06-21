@@ -44,7 +44,11 @@ This will install all of the required packages.
 
 - [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py. 
 
-## Running the server
+## Running the local development server
+
+All necessary credential to run the project are provided in the setup.sh file. The credentials can be enabled by running the following command:
+
+- source setup.sh
 
 Before running the application locally, make the following changes in the `app.py` file in root directory:
 
@@ -69,6 +73,7 @@ flask run --reload
 Setting the `FLASK_APP` variable to `app.py` directs flask to use the `app.py` file to find the application. 
 
 Using the `--reload` flag will detect file changes and restart the server automatically.
+
 
 ## API Reference
 
